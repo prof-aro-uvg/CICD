@@ -16,6 +16,7 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install build
+        working-directory: ./mlops
       - run: python -m build
 
   publish:
@@ -30,5 +31,6 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install build
+        working-directory: ./mlops
       - run: python -m build
       - uses: pypa/gh-action-pypi-publish@v1.8.10
