@@ -9,10 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.0
+        with:
+          path: ./mlops
       - uses: actions/setup-python@v4
         with:
           python-version: '3.11'
-      - run: cd mlops/
+          path: ./mlops
       - run: pip install build
       - run: python -m build
 
@@ -21,10 +23,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.0
+        with:
+            path: ./mlops
       - uses: actions/setup-python@v4
         with:
           python-version: '3.11'
-      - run: cd mlops/
+          path: ./mlops
       - run: pip install build
       - run: python -m build
       - uses: pypa/gh-action-pypi-publish@v1.8.10
