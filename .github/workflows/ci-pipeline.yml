@@ -8,29 +8,29 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4.2.0
       - name: Change to MLOPS Directory
-        working-directory: ./mlops
+        path: ./mlops
         run: echo "Moving to mlops directory..."
       - uses: actions/setup-python@v4
         with:
           python-version: '3.11'
       - run: pip install build
-        working-directory: ./mlops
+        path: ./mlops
       - run: python -m build
 
   publish:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4.2.0
       - name: Change to MLOPS Directory
-        working-directory: ./mlops
+        path: ./mlops
         run: echo "Moving to mlops directory..."
       - uses: actions/setup-python@v4
         with:
           python-version: '3.11'
       - run: pip install build
-        working-directory: ./mlops
+        path: ./mlops
       - run: python -m build
       - uses: pypa/gh-action-pypi-publish@v1.8.10
