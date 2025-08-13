@@ -10,13 +10,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4.2.0
       - name: Change to MLOPS Directory
-        path: ./mlops
-        run: echo "Moving to mlops directory..."
+        run: cd mlops/
       - uses: actions/setup-python@v4
         with:
           python-version: '3.11'
       - run: pip install build
-        path: ./mlops
       - run: python -m build
 
   publish:
@@ -25,12 +23,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4.2.0
       - name: Change to MLOPS Directory
-        path: ./mlops
-        run: echo "Moving to mlops directory..."
+        run: cd mlops/
       - uses: actions/setup-python@v4
         with:
           python-version: '3.11'
       - run: pip install build
-        path: ./mlops
       - run: python -m build
       - uses: pypa/gh-action-pypi-publish@v1.8.10
